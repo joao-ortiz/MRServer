@@ -1,4 +1,8 @@
-const httpserver = require('http').createServer()
+const httpserver = require('http').createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.write('<h1>There is nothing here</h1>')
+    res.end()
+})
 const io = require('socket.io')(httpserver, {
     transports: ["websocket"],
     cors: {
