@@ -74,4 +74,4 @@ io.on("connection", (socket) => {
     })
 })
 
-httpserver.listen("8888");
+httpserver.listen(process.env.PORT || 8888);
