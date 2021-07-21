@@ -25,7 +25,7 @@ io.on("connection", (socket) => {
         socket.broadcast.emit('UserJoinedRoom', user)
     })
 
-    socket.on("HostEndCall", () => {
+    socket.on("EndCall", () => {
         io.emit("EndCall")
     })
 
@@ -69,8 +69,8 @@ io.on("connection", (socket) => {
         io.emit("UserVote",votePayload)
     })
 
-    socket.on("RemoveVote", userId => {
-        io.emit("RemoveVote",userId)
+    socket.on("RemoveVote", payload => {
+        io.emit("RemoveVote", payload)
     })
 
     socket.on("EndVotingSesh", () => {
@@ -78,7 +78,7 @@ io.on("connection", (socket) => {
     })
 })
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8888;
 
 httpserver.listen(PORT, '0.0.0.0');
 
