@@ -29,6 +29,10 @@ io.on("connection", (socket) => {
         io.emit("EndCall")
     })
 
+    socket.on("SetRoomMode", mode => {
+        io.emit("SetRoomMode", mode)
+    })
+
     socket.on("disconnect", () => {
         users = users.filter( user => {
             return user.id !== socket.id
