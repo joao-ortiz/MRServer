@@ -65,20 +65,20 @@ io.on("connection", (socket) => {
         io.to(target).emit("NewICECandidate", {iceId: socket.id, candidate})
     })
 
-    socket.on("PoolOptions", poolOptions => {
-        io.emit("NewVotingSesh", poolOptions)
+    socket.on("NewStory", story => {
+        io.emit("SetStory", story)
     })
 
-    socket.on("Vote", votePayload => {
-        io.emit("UserVote",votePayload)
+    socket.on("Point", votePayload => {
+        io.emit("UserPoint",votePayload)
     })
 
-    socket.on("RemoveVote", payload => {
-        io.emit("RemoveVote", payload)
+    socket.on("RemovePoint", payload => {
+        io.emit("RemovePoint", payload)
     })
 
-    socket.on("EndVotingSesh", () => {
-        io.emit("VotingResults")
+    socket.on("EndPointingSesh", () => {
+        io.emit("Results")
     })
 })
 
