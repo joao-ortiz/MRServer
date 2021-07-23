@@ -67,6 +67,7 @@ io.on("connection", (socket) => {
 
     socket.on("NewStory", story => {
         io.emit("SetStory", story)
+        io.emit("SetRoomMode", "vote")
     })
 
     socket.on("Point", votePayload => {
@@ -77,7 +78,8 @@ io.on("connection", (socket) => {
         io.emit("RemovePoint", payload)
     })
 
-    socket.on("EndPointingSesh", () => {
+    socket.on("Results", () => {
+        console.log("result");
         io.emit("Results")
     })
 })
